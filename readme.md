@@ -51,7 +51,24 @@ L'ORM sera structuré autour des concepts suivants :
 ```php
 $orm = new ORM([
     'host' => 'localhost',
-    'dbname' => 'fut_champ',
+    'dbname' => 'fut_db',
     'username' => 'root',
-    'password' => 'password'
+    'password' => ''
 ]);
+```
+
+### Strecturedu projet:
+
+```
+project/
+├── document/
+│   └── readme.md
+├── config/
+│   └── database.php
+├── includes/
+│   └── Player.php
+|
+├── index.php
+|
+└── readme.md
+```
