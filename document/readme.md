@@ -18,7 +18,6 @@ Une classe est un modèle qui définit les propriétés et les méthodes d’un 
 ```php
 class Exemple {
     public $propriete;
-    
     public function methode() {
         echo "Méthode appelée.";
     }
@@ -44,17 +43,14 @@ Prenons une entité du monde réel, comme une voiture. Une classe peut représen
 class Voiture {
     public $marque;
     public $couleur;
-
     public function __construct($marque, $couleur) {
         $this->marque = $marque;
         $this->couleur = $couleur;
     }
-
     public function demarrer() {
         echo "La voiture {$this->marque} démarre.\n";
     }
 }
-
 // Modélisation d'une voiture spécifique
 $maVoiture = new Voiture("Renault", "bleue");
 $maVoiture->demarrer();
@@ -74,7 +70,6 @@ class Animal {
         echo "Cet animal mange.\n";
     }
 }
-
 class Chien extends Animal {
     public function aboyer() {
         echo "Le chien aboie.\n";
@@ -104,20 +99,16 @@ L'encapsulation consiste à regrouper les données (propriétés) et les comport
 ```php
 class CompteBancaire {
     private $solde;
-
     public function __construct($soldeInitial) {
         $this->solde = $soldeInitial;
     }
-
     public function deposer($montant) {
         $this->solde += $montant;
     }
-
     public function afficherSolde() {
         echo "Le solde est de {$this->solde} euros.\n";
     }
 }
-
 $compte = new CompteBancaire(100);
 $compte->deposer(50);
 $compte->afficherSolde();
@@ -137,12 +128,10 @@ abstract class Forme {
 class Rectangle extends Forme {
     private $longueur;
     private $largeur;
-
     public function __construct($longueur, $largeur) {
         $this->longueur = $longueur;
         $this->largeur = $largeur;
     }
-
     public function calculerAire() {
         return $this->longueur * $this->largeur;
     }
@@ -164,13 +153,11 @@ class Animal {
         echo "Cet animal mange.\n";
     }
 }
-
 class Chien extends Animal {
     public function aboyer() {
         echo "Le chien aboie.\n";
     }
 }
-
 $monChien = new Chien();
 $monChien->manger();  // Sortie : Cet animal mange.
 $monChien->aboyer();  // Sortie : Le chien aboie.
@@ -186,20 +173,16 @@ class Oiseau {
         echo "L'oiseau chante.\n";
     }
 }
-
 class Perroquet extends Oiseau {
     public function communiquer() {
         echo "Le perroquet imite des sons.\n";
     }
 }
-
 function faireCommuniquer(Oiseau $oiseau) {
     $oiseau->communiquer();
 }
-
 $unOiseau = new Oiseau();
 $unPerroquet = new Perroquet();
-
 faireCommuniquer($unOiseau);    // Sortie : L'oiseau chante.
 faireCommuniquer($unPerroquet);  // Sortie : Le perroquet imite des sons.
 ```
@@ -215,7 +198,6 @@ class NomDeLaClasse {
     // Propriétés
     public $propriete1;
     public $propriete2;
-
     // Méthodes
     public function methode1() {
         // Code
@@ -232,12 +214,10 @@ class Fruit {
     // Propriétés
     public $name;
     public $color;
-
     // Méthodes
     public function set_name($name) {
         $this->name = $name;
     }
-    
     public function get_name() {
         return $this->name;
     }
@@ -256,10 +236,8 @@ $objet = new NomDeLaClasse();
 ```php
 $apple = new Fruit();  // Création d'un objet de type Fruit
 $banana = new Fruit(); // Création d'un autre objet de type Fruit
-
 $apple->set_name("Apple");  // Définit le nom de la pomme
 $banana->set_name("Banana"); // Définit le nom de la banane
-
 echo $apple->get_name();  // Affiche "Apple"
 echo $banana->get_name(); // Affiche "Banana"
 ```
@@ -273,20 +251,16 @@ class Fruit {
     // Propriétés
     public $name;
     public $color;
-
     // Méthodes
     public function set_name($name) {
         $this->name = $name;
     }
-
     public function get_name() {
         return $this->name;
     }
-
     public function set_color($color) {
         $this->color = $color;
     }
-
     public function get_color() {
         return $this->color;
     }
@@ -296,7 +270,6 @@ class Fruit {
 $apple = new Fruit();
 $apple->set_name("Apple");
 $apple->set_color("Red");
-
 echo "Name: " . $apple->get_name();  // Affiche : Name: Apple
 echo "Color: " . $apple->get_color(); // Affiche : Color: Red
 ```
@@ -308,19 +281,15 @@ Le mot-clé `$this` est utilisé à l'intérieur des méthodes d’une classe po
 ```php
 class Fruit {
     public $name;
-
     public function set_name($name) {
         $this->name = $name; // Utilisation de $this pour accéder à la propriété de l'objet
     }
-
     public function get_name() {
         return $this->name; // Utilisation de $this pour accéder à la propriété de l'objet
     }
 }
-
 $apple = new Fruit();
 $apple->set_name("Apple");
-
 echo $apple->get_name(); // Affiche : Apple
 ```
 
@@ -332,10 +301,8 @@ Il est possible de modifier les propriétés d’un objet directement depuis l�
 class Fruit {
     public $name;  // Propriété publique
 }
-
 $apple = new Fruit();
 $apple->name = "Apple"; // Modification directe de la propriété
-
 echo $apple->name; // Affiche : Apple
 ```
 
@@ -345,9 +312,7 @@ Le mot-clé `instanceof` permet de vérifier si un objet est une instance d'une 
 #### Exemple avec `instanceof`
 ```php
 class Fruit {}
-
 $apple = new Fruit();
-
 var_dump($apple instanceof Fruit); // Affiche : bool(true)
 ```
 
@@ -363,20 +328,16 @@ PHP permet de définir la visibilité des propriétés et méthodes à l’aide 
 class Fruit {
     public $name;
     private $price;
-
     public function set_price($price) {
         $this->price = $price; // accessible car à l'intérieur de la classe
     }
-
     public function get_price() {
         return $this->price; // accessible car à l'intérieur de la classe
     }
 }
-
 $apple = new Fruit();
 $apple->name = "Apple"; // Accessible car public
 $apple->set_price(1.99); // Méthode publique pour accéder à la propriété privée
-
 echo $apple->name; // Affiche : Apple
 echo $apple->get_price(); // Affiche : 1.99
 ```
@@ -395,24 +356,19 @@ class Enfant extends ParentClass {
 ```php
 class Fruit {
     public $name;
-
     public function set_name($name) {
         $this->name = $name;
     }
 }
-
 class Apple extends Fruit {
     public $color;
-
     public function set_color($color) {
         $this->color = $color;
     }
 }
-
 $apple = new Apple();
 $apple->set_name("Apple");
 $apple->set_color("Red");
-
 echo $apple->name;  // Affiche : Apple
 echo $apple->color; // Affiche : Red
 ```
@@ -431,20 +387,16 @@ class Voiture {
     public function setMarque($marque) {
         $this->marque = $marque;
     }
-
     public function setCouleur($couleur) {
         $this->couleur = $couleur;
     }
-
     public function afficherInfo() {
         return "La voiture est une " . $this->marque . " de couleur " . $this->couleur;
     }
 }
-
 $maVoiture = new Voiture();
 $maVoiture->setMarque('Toyota');
 $maVoiture->setCouleur('Rouge');
-
 echo $maVoiture->afficherInfo();  // Affiche : La voiture est une Toyota de couleur Rouge
 ```
 
@@ -459,7 +411,6 @@ class Calculatrice {
         return $a + $b;
     }
 }
-
 echo Calculatrice::addition(5, 3); // Affiche : 8
 ```
 
@@ -485,18 +436,15 @@ Un constructeur peut également accepter des paramètres, ce qui permet de passe
 class Voiture {
     public $marque;
     public $couleur;
-
     // Le constructeur prend des paramètres pour initialiser les propriétés
     public function __construct($marque, $couleur) {
         $this->marque = $marque;
         $this->couleur = $couleur;
     }
-
     public function afficherInfo() {
         return "Voiture: " . $this->marque . ", Couleur: " . $this->couleur;
     }
 }
-
 // Création de l'objet avec des paramètres
 $voiture1 = new Voiture("Toyota", "Rouge");
 echo $voiture1->afficherInfo();  // Affiche : Voiture: Toyota, Couleur: Rouge
@@ -518,17 +466,14 @@ class NomDeLaClasse {
 ```php
 class Fichier {
     public $nomFichier;
-
     public function __construct($nom) {
         $this->nomFichier = $nom;
         echo "Fichier $nom ouvert.\n";
     }
-
     public function __destruct() {
         echo "Fichier $this->nomFichier fermé.\n";
     }
 }
-
 // Création de l'objet, qui ouvre un fichier
 $fichier1 = new Fichier("document.txt");
 // À la fin du script, PHP appelle automatiquement le destructeur
@@ -554,13 +499,11 @@ Les propriétés ou méthodes public peuvent être accédées ou modifiées par 
 ```php
 class Personne {
     public $nom;  // Propriété publique
-
     // Méthode publique
     public function afficherNom() {
         return $this->nom;
     }
 }
-
 $personne = new Personne();
 $personne->nom = "Alice";  // Accès direct à la propriété publique
 echo $personne->afficherNom();  // Affiche : Alice
@@ -573,12 +516,10 @@ Les propriétés et méthodes private ne sont accessibles que depuis la classe e
 ```php
 class Personne {
     private $nom;  // Propriété privée
-
     // Méthode privée
     private function afficherNom() {
         return $this->nom;
     }
-
     // Méthodes publiques pour accéder aux propriétés privées
     public function setNom($nom) {
         $this->nom = $nom;  // Utilisation d'un setter pour modifier une propriété privée
@@ -587,7 +528,6 @@ class Personne {
         return $this->nom;  // Utilisation d'un getter pour accéder à une propriété privée
     }
 }
-
 $personne = new Personne();
 // $personne->nom = "Alice";  // Erreur ! Propriété privée
 $personne->setNom("Alice");  // Modification via un setter
@@ -601,23 +541,19 @@ Les propriétés ou méthodes protected peuvent être accédées par la classe e
 ```php
 class Animal {
     protected $nom;  // Propriété protégée
-
     public function __construct($nom) {
         $this->nom = $nom;
     }
-
     // Méthode protégée
     protected function afficherNom() {
         return $this->nom;
     }
 }
-
 class Chien extends Animal {
     public function afficherNomChien() {
         return $this->afficherNom();  // Accès à la méthode protégée dans la classe enfant
     }
 }
-
 $chien = new Chien("Rex");
 echo $chien->afficherNomChien();  // Affiche : Rex
 ```
@@ -629,24 +565,20 @@ L'encapsulation est une pratique courante où les propriétés sont définies co
 ```php
 class CompteBancaire {
     private $solde;  // Propriété privée
-
     // Constructeur pour initialiser le solde
     public function __construct($soldeInitial) {
         $this->solde = $soldeInitial;
     }
-
     // Getter pour obtenir le solde
     public function getSolde() {
         return $this->solde;
     }
-
     // Setter pour ajouter de l'argent au solde
     public function deposer($montant) {
         if ($montant > 0) {
             $this->solde += $montant;  // Ajoute de l'argent au solde
         }
     }
-
     // Setter pour retirer de l'argent du solde
     public function retirer($montant) {
         if ($montant > 0 && $montant <= $this->solde) {
@@ -656,7 +588,6 @@ class CompteBancaire {
         }
     }
 }
-
 // Création d'un compte bancaire avec un solde initial de 1000€
 $compte = new CompteBancaire(1000);
 // Dépôt de 500€
@@ -680,20 +611,17 @@ class Livre {
     public $titre;
     public $auteur;
     public $prix;
-
     // Méthode pour définir les propriétés
     public function setDetails($titre, $auteur, $prix) {
         $this->titre = $titre;
         $this->auteur = $auteur;
         $this->prix = $prix;
     }
-
     // Méthode pour obtenir les détails du livre
     public function afficherDetails() {
         return "Titre: " . $this->titre . ", Auteur: " . $this->auteur . ", Prix: " . $this->prix . "€";
     }
 }
-
 $livre1 = new Livre();
 $livre1->setDetails("PHP pour débutants", "John Doe", 29.99);
 echo $livre1->afficherDetails(); // Affiche : Titre: PHP pour débutants, Auteur: John Doe, Prix: 29.99€
@@ -721,13 +649,11 @@ Un constructeur peut également accepter des paramètres, ce qui permet de passe
 class Voiture {
     public $marque;
     public $couleur;
-
     // Le constructeur prend des paramètres pour initialiser les propriétés
     public function __construct($marque, $couleur) {
         $this->marque = $marque;
         $this->couleur = $couleur;
     }
-
     public function afficherInfo() {
         return "Voiture: " . $this->marque . ", Couleur: " . $this->couleur;
     }
@@ -759,12 +685,10 @@ class Fichier {
         $this->nomFichier = $nom;
         echo "Fichier $nom ouvert.\n";
     }
-
     public function __destruct() {
         echo "Fichier $this->nomFichier fermé.\n";
     }
 }
-
 // Création de l'objet, qui ouvre un fichier
 $fichier1 = new Fichier("document.txt");
 // À la fin du script, PHP appelle automatiquement le destructeur
@@ -791,13 +715,11 @@ Les propriétés ou méthodes public peuvent être accédées ou modifiées par 
 ```php
 class Personne {
     public $nom;  // Propriété publique
-
     // Méthode publique
     public function afficherNom() {
         return $this->nom;
     }
 }
-
 $personne = new Personne();
 $personne->nom = "Alice";  // Accès direct à la propriété publique
 echo $personne->afficherNom();  // Affiche : Alice
@@ -810,12 +732,10 @@ Les propriétés et méthodes private ne sont accessibles que depuis la classe e
 ```php
 class Personne {
     private $nom;  // Propriété privée
-
     // Méthode privée
     private function afficherNom() {
         return $this->nom;
     }
-
     // Méthodes publiques pour accéder aux propriétés privées
     public function setNom($nom) {
         $this->nom = $nom;  // Utilisation d'un setter pour modifier une propriété privée
@@ -824,7 +744,6 @@ class Personne {
         return $this->nom;  // Utilisation d'un getter pour accéder à une propriété privée
     }
 }
-
 $personne = new Personne();
 // $personne->nom = "Alice";  // Erreur ! Propriété privée
 $personne->setNom("Alice");  // Modification via un setter
@@ -838,23 +757,19 @@ Les propriétés ou méthodes protected peuvent être accédées par la classe e
 ```php
 class Animal {
     protected $nom;  // Propriété protégée
-
     public function __construct($nom) {
         $this->nom = $nom;
     }
-
     // Méthode protégée
     protected function afficherNom() {
         return $this->nom;
     }
 }
-
 class Chien extends Animal {
     public function afficherNomChien() {
         return $this->afficherNom();  // Accès à la méthode protégée dans la classe enfant
     }
 }
-
 $chien = new Chien("Rex");
 echo $chien->afficherNomChien();  // Affiche : Rex
 ```
@@ -877,7 +792,6 @@ Imaginons une classe abstraite `Forme` qui définit un modèle pour des formes g
 abstract class Forme {
     // Méthode abstraite pour calculer l'aire
     abstract public function calculerAire();
-    
     // Méthode concrète pour afficher des informations sur la forme
     public function afficherInfo() {
         echo "Je suis une forme géométrique.<br>";
@@ -914,29 +828,23 @@ abstract class Forme {
         echo "Je suis une forme géométrique.<br>";
     }
 }
-
 // Sous-classe Cercle qui hérite de Forme
 class Cercle extends Forme {
     private $rayon;
-    
     public function __construct($rayon) {
         $this->rayon = $rayon;
     }
-    
     // Implémentation de la méthode calculerAire()
     public function calculerAire() {
         return pi() * pow($this->rayon, 2);  // Aire d'un cercle : πr²
     }
 }
-
 // Sous-classe Carre qui hérite de Forme
 class Carre extends Forme {
     private $cote;
-    
     public function __construct($cote) {
         $this->cote = $cote;
     }
-    
     // Implémentation de la méthode calculerAire()
     public function calculerAire() {
         return pow($this->cote, 2);  // Aire d'un carré : côté²
@@ -952,7 +860,6 @@ class Carre extends Forme {
 // Création d'un cercle avec un rayon de 5
 $cercle = new Cercle(5);
 echo "Aire du cercle : " . $cercle->calculerAire() . "<br>";  // Aire du cercle : 78.539816339745
-
 // Création d'un carré avec un côté de 4
 $carre = new Carre(4);
 echo "Aire du carré : " . $carre->calculerAire() . "<br>";  // Aire du carré : 16
@@ -1007,44 +914,36 @@ En PHP, une interface est un outil puissant pour définir un contrat que les cla
 
 ```php
 <?php
-
 // Définition d'une interface
 interface Animal {
     public function faireDuBruit();
     public function seDeplacer();
 }
-
 // Classe Chien qui implémente l'interface Animal
 class Chien implements Animal {
     public function faireDuBruit() {
         return "Wouaf!";
     }
-    
     public function seDeplacer() {
         return "Je cours sur mes pattes.";
     }
 }
-
 // Classe Oiseau qui implémente l'interface Animal
 class Oiseau implements Animal {
     public function faireDuBruit() {
         return "Cui-cui!";
     }
-    
     public function seDeplacer() {
         return "Je vole dans les airs.";
     }
 }
-
 // Utilisation des classes
 $chien = new Chien();
 echo $chien->faireDuBruit();  // Affiche : Wouaf!
 echo $chien->seDeplacer();   // Affiche : Je cours sur mes pattes.
-
 $oiseau = new Oiseau();
 echo $oiseau->faireDuBruit();  // Affiche : Cui-cui!
 echo $oiseau->seDeplacer();   // Affiche : Je vole dans les airs.
-
 ?>
 ```
 
@@ -1056,43 +955,35 @@ echo $oiseau->seDeplacer();   // Affiche : Je vole dans les airs.
 
 ```php
 <?php
-
 // Interface pour les objets capables de voler
 interface Volant {
     public function voler();
 }
-
 // Interface pour les objets capables de nager
 interface Nageant {
     public function nager();
 }
-
 // Classe Canard qui implémente deux interfaces
 class Canard implements Volant, Nageant {
     public function voler() {
         return "Je vole avec mes ailes.";
     }
-    
     public function nager() {
         return "Je nage dans l'eau.";
     }
 }
-
 // Classe Avion qui implémente uniquement l'interface Volant
 class Avion implements Volant {
     public function voler() {
         return "Je vole avec des moteurs.";
     }
 }
-
 // Utilisation des classes
 $canard = new Canard();
 echo $canard->voler();  // Affiche : Je vole avec mes ailes.
 echo $canard->nager();  // Affiche : Je nage dans l'eau.
-
 $avion = new Avion();
 echo $avion->voler();  // Affiche : Je vole avec des moteurs.
-
 ?>
 ```
 
@@ -1106,14 +997,11 @@ echo $avion->voler();  // Affiche : Je vole avec des moteurs.
 
 ```php
 <?php
-
 function faireVoler(Volant $objet) {
     echo $objet->voler();
 }
-
 $canard = new Canard();
 $avion = new Avion();
-
 faireVoler($canard);  // Affiche : Je vole avec mes ailes.
 faireVoler($avion);   // Affiche : Je vole avec des moteurs.
 
@@ -1141,24 +1029,19 @@ Les propriétés statiques appartiennent à la classe et non à ses instances. C
 
 ```php
 <?php
-
 class Compteur {
     // Propriété statique
     public static $compte = 0;
-
     // Méthode pour incrémenter la propriété statique
     public static function incrementer() {
         self::$compte++;
     }
 }
-
 // Accéder à la propriété statique sans instancier la classe
 echo "Valeur initiale : " . Compteur::$compte . "<br>";  // Affiche : Valeur initiale : 0
-
 // Incrémenter la propriété statique
 Compteur::incrementer();
 Compteur::incrementer();
-
 // Afficher la nouvelle valeur
 echo "Valeur après incrémentations : " . Compteur::$compte . "<br>";  // Affiche : Valeur après incrémentations : 2
 
@@ -1184,17 +1067,14 @@ class MathUtils {
     public static function addition($a, $b) {
         return $a + $b;
     }
-
     // Méthode statique pour calculer la puissance
     public static function puissance($base, $exposant) {
         return pow($base, $exposant);
     }
 }
-
 // Appeler les méthodes statiques sans instancier la classe
 echo "Addition : " . MathUtils::addition(5, 10) . "<br>";  // Affiche : Addition : 15
 echo "Puissance : " . MathUtils::puissance(2, 3) . "<br>";  // Affiche : Puissance : 8
-
 ?>
 ```
 
@@ -1210,11 +1090,9 @@ Vous pouvez utiliser des propriétés statiques avec des méthodes statiques pou
 
 ```php
 <?php
-
 class Identifiant {
     // Propriété statique pour suivre l'ID courant
     private static $idCourant = 0;
-
     // Méthode statique pour générer un nouvel ID
     public static function genererNouvelId() {
         self::$idCourant++;
@@ -1226,7 +1104,6 @@ class Identifiant {
 echo "Premier ID : " . Identifiant::genererNouvelId() . "<br>";  // Affiche : Premier ID : 1
 echo "Deuxième ID : " . Identifiant::genererNouvelId() . "<br>"; // Affiche : Deuxième ID : 2
 echo "Troisième ID : " . Identifiant::genererNouvelId() . "<br>"; // Affiche : Troisième ID : 3
-
 ?>
 ```
 
@@ -1245,18 +1122,15 @@ Bien que les propriétés et méthodes statiques appartiennent à la classe, vou
 
 class Exemple {
     public static $statique = "Je suis une propriété statique.";
-
     public static function afficherStatique() {
         return "Je suis une méthode statique.";
     }
 }
 
 $instance = new Exemple();
-
 // Accéder à une propriété et une méthode statique via l'instance
 echo $instance::$statique . "<br>";  // Affiche : Je suis une propriété statique.
 echo $instance::afficherStatique() . "<br>";  // Affiche : Je suis une méthode statique.
-
 ?>
 ```
 
@@ -1272,12 +1146,10 @@ Les méthodes et propriétés statiques sont utiles pour gérer une configuratio
 class Config {
     // Propriété statique pour stocker les paramètres
     private static $parametres = [];
-
     // Méthode statique pour définir un paramètre
     public static function definir($cle, $valeur) {
         self::$parametres[$cle] = $valeur;
     }
-
     // Méthode statique pour obtenir un paramètre
     public static function obtenir($cle) {
         return self::$parametres[$cle] ?? null;
@@ -1287,11 +1159,9 @@ class Config {
 // Définir des paramètres
 Config::definir('base_de_donnees', 'mysql');
 Config::definir('hote', 'localhost');
-
 // Obtenir les paramètres
 echo "Base de données : " . Config::obtenir('base_de_donnees') . "<br>";  // Affiche : Base de données : mysql
 echo "Hôte : " . Config::obtenir('hote') . "<br>";  // Affiche : Hôte : localhost
-
 ?>
 ```
 
@@ -1338,7 +1208,6 @@ src/
 ```php
 <?php
 namespace App\Utilisateurs;
-
 class Gestionnaire {
     public function afficherUtilisateurs() {
         return "Liste des utilisateurs.";
@@ -1350,7 +1219,6 @@ class Gestionnaire {
 ```php
 <?php
 namespace App\Produits;
-
 class Gestionnaire {
     public function afficherProduits() {
         return "Liste des produits.";
@@ -1361,18 +1229,14 @@ class Gestionnaire {
 **Utilisation des namespaces :**
 ```php
 <?php
-
 require_once 'src/Utilisateurs/Gestionnaire.php';
 require_once 'src/Produits/Gestionnaire.php';
-
 // Import des classes avec leurs namespaces
 use App\Utilisateurs\Gestionnaire as GestionnaireUtilisateurs;
 use App\Produits\Gestionnaire as GestionnaireProduits;
-
 // Instanciation des classes
 $gestionnaireUtilisateurs = new GestionnaireUtilisateurs();
 $gestionnaireProduits = new GestionnaireProduits();
-
 // Appel des méthodes
 echo $gestionnaireUtilisateurs->afficherUtilisateurs(); // Affiche : Liste des utilisateurs.
 echo $gestionnaireProduits->afficherProduits(); // Affiche : Liste des produits.
@@ -1427,17 +1291,13 @@ Supposons que vous avez les mêmes classes que précédemment dans le dossier `s
 **Code :**
 ```php
 <?php
-
 // Inclure l'autoloader de Composer
 require_once __DIR__ . '/vendor/autoload.php';
-
 // Utiliser les classes
 use App\Utilisateurs\Gestionnaire as GestionnaireUtilisateurs;
 use App\Produits\Gestionnaire as GestionnaireProduits;
-
 $gestionnaireUtilisateurs = new GestionnaireUtilisateurs();
 $gestionnaireProduits = new GestionnaireProduits();
-
 echo $gestionnaireUtilisateurs->afficherUtilisateurs(); // Affiche : Liste des utilisateurs.
 echo $gestionnaireProduits->afficherProduits(); // Affiche : Liste des produits.
 ?>
