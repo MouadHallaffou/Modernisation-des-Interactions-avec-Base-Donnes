@@ -7,8 +7,8 @@ $pdo = $db->connect();
 
 $player = new Player($pdo);
 
-$data = [
-    'name_player' => 'mouad',
+$insertData = [
+    'name_player' => 'Mouad',
     'photo' => 'image.jpg',
     'position' => 'ST',
     'rating' => 85,
@@ -19,54 +19,51 @@ $data = [
     'defending' => 40,
     'physical' => 75
 ];
+$playerId = $player->insertEntry('Players', $insertData);
 
-$player->createPlayer($data);
+$updateData = ['rating' => 99, 'pace' => 95];
+$rowsUpdated = $player->updateEntry('Players', $updateData, 'player_id', $playerId);
 
-$playerDetails = $player->getPlayer();
+$players = $player->selectEntries('Players', '*', 'rating > ?', [90]);
 
-if ($playerDetails) {
-    echo "<table border='1'>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Photo</th>
-                    <th>Position</th>
-                    <th>Rating</th>
-                    <th>Pace</th>
-                    <th>Shooting</th>
-                    <th>Passing</th>
-                    <th>Dribbling</th>
-                    <th>Defending</th>
-                    <th>Physical</th>
-                </tr>
-            </thead>
-            <tbody>";
+if (!empty($players)) {
+    echo "<table border='1' style='border-collapse: collapse; width: 50%; text-align: center;'>";
+    echo "<thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Photo</th>
+                <th>Position</th>
+                <th>Note</th>
+                <th>Vitesse</th>
+                <th>Tir</th>
+                <th>Passe</th>
+                <th>Dribble</th>
+                <th>Défense</th>
+                <th>Physique</th>
+            </tr>
+          </thead>";
+    echo "<tbody>";
 
-    foreach ($playerDetails as $player) {
+    foreach ($players as $p) {
         echo "<tr>
-                <td>{$player['player_id']}</td>
-                <td>{$player['name_player']}</td>
-                <td>{$player['photo']}</td>
-                <td>{$player['position']}</td>
-                <td>{$player['rating']}</td>
-                <td>{$player['pace']}</td>
-                <td>{$player['shooting']}</td>
-                <td>{$player['passing']}</td>
-                <td>{$player['dribbling']}</td>
-                <td>{$player['defending']}</td>
-                <td>{$player['physical']}</td>
-            </tr>";
+                <td>{$p['player_id']}</td>
+                <td>{$p['name_player']}</td>
+                <td><img src='{$p['photo']}' alt='mouad'></td>
+                <td>{$p['position']}</td>
+                <td>{$p['rating']}</td>
+                <td>{$p['pace']}</td>
+                <td>{$p['shooting']}</td>
+                <td>{$p['passing']}</td>
+                <td>{$p['dribbling']}</td>
+                <td>{$p['defending']}</td>
+                <td>{$p['physical']}</td>
+              </tr>";
     }
 
     echo "</tbody></table>";
-} else {
-    echo "Aucun joueur trouvé.";
 }
 
-$updateData = ['rating' => 99, 'pace' => 99];
-$player->updatePlayer(30, $updateData);
-
-$player->deletePlayer(29);
+$rowsDeleted = $player->deleteEntry('Players', 'player_id', 57);
 
 ?>
